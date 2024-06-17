@@ -15,12 +15,13 @@
       border: 3px solid green;
       height: 10%;
       font-size: 1em;
-
+      background-color: #d7dca5;
     }
 
     nav {
       border: 3px solid green;
       height: 10%;
+      background-color: #d7dca5;
     }
 
     #main {
@@ -28,6 +29,7 @@
       height: 70%;
       font-size: 0.8em;
       position: relative;
+      background-color: #d7dca5;
     }
 
     #box {
@@ -40,6 +42,7 @@
       border: 3px solid green;
       height: 10%;
       font-size: 0.7em;
+      background-color: #d7dca5;
     }
 
     body {
@@ -52,9 +55,10 @@
 
     #aid {
       position: absolute;
-      border: 3px solid blue;
+      border: 3px solid rgb(26, 162, 73);
       top: 0px;
       left: 600px;
+      background-color: #d7dca5;
     }
 
     #bookface {
@@ -68,6 +72,36 @@
       top: 7%;
       background-size: cover;
       /* 设置背景图片等比例缩放，并填充整个元素 */
+    }
+
+    .btn {
+      background-color: #4CAF50;
+      /* 按钮背景颜色 */
+      border: none;
+      /* 移除边框 */
+      color: white;
+      /* 按钮文字颜色 */
+      padding: 10px 20px;
+      /* 设置内边距 */
+      text-align: center;
+      /* 居中对齐文字 */
+      text-decoration: none;
+      /* 移除下划线 */
+      display: inline-block;
+      /* 让按钮在同一行 */
+      font-size: 16px;
+      /* 设置字体大小 */
+      margin: 4px 2px;
+      /* 添加外边距 */
+      cursor: pointer;
+      /* 鼠标悬停时显示手型光标 */
+      border-radius: 40%;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+      /* 鼠标悬停时按钮背景颜色变化 */
+    }
 
     }
   </style>
@@ -76,13 +110,13 @@
 <body>
   <header>
     <p id="book">
-      《我的毕设题目》
+      Web客户端技术的个性化UI实现
     </p>
   </header>
   <nav>
-    <button>向前</button>
-    <button>向后</button>
-    <button>其他</button>
+    <button class="btn">向前</button>
+    <button class="btn">向后</button>
+    <button class="btn">随机</button>
   </nav>
   <main id="main">
     <div id="bookface">
@@ -102,7 +136,10 @@
     用户键盘响应区
     <p id="typeText"></p>
     <hr>
+    <p id="keyboard2"></p>
+    <hr>
     <p id="keyboard"></p>
+
   </div>
 
   <script>
@@ -225,21 +262,24 @@
         ev.preventDefault();
         let k = ev.key;
         let c = ev.keyCode;
-        $("keyboard").textContent = "您已按键 ：" + k + " ，" + "字符编码 ：" + c + "\n";
+        $("keyboard2").textContent = "您已按键 ：" + k + " ，" + "字符编码 ：" + c;
 
       });
       $("body").addEventListener("keyup", function (ev) {
         ev.preventDefault();
         let key = ev.key;
         let code = ev.keyCode;
-        var a = "松开按键 ：" + key + " ，" + "字符编码 ：" + code + "\n";
-        //$("keyboard").textContent += a
-        function b(a) {
+        //$("keyboard").textContent = "松开按键 ：" + k + " ，" + "字符编码 ：" + c;
+        var a = "松开按键 ：" + key + " ，" + "字符编码 ：" + code+ "------------" + "\n";
+        $("keyboard").textContent += a
+       /*  function b(a) {
           let c = "";
-          c = c + a;
+          c = c + a + d;
           return c
         }
-        $("keyboard").textContent = b(a)
+        var d = b(a)
+        $("keyboard").textContent = d */
+
         if (printLetter(key)) {
           $("typeText").textContent += key;
         }
